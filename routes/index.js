@@ -4,10 +4,11 @@ const Comment = require('../models/Comment');
 const axios = require('axios');
 
 // Temporarily modify the home route to not depend on MongoDB
+// Put MongoDB in there
 router.get('/', async (req, res) => {
     try {
       // Temporarily use empty array instead of database query
-      const comments = [];
+      const comments = await Comment.find().sort({ createdAt: -1 }).limit(10);
       
       res.render('index', { 
         title: 'LeBron James Fan Page',

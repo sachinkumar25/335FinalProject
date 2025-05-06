@@ -16,6 +16,14 @@
         <p><strong>Weight:</strong> <%= player.weight_pounds %> lbs</p>
         <p><strong>Team:</strong> <%= player.team.full_name %> (<%= player.team.abbreviation %>)</p>
       </div>
+    <% } else if(typeof error !== 'undefined') { %>
+      <div class="error-message">
+        <p><%= error %></p>
+      </div>
+    <% } else { %>
+      <div class="error-message">
+        <p>Could not retrieve LeBron's stats at this time. Please try again later.</p>
+      </div>
     <% } %>
 
     <% if(stats) { %>

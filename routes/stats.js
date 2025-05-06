@@ -2,29 +2,48 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-// Ball Don't Lie API - Player ID for LeBron James is 237
-const LEBRON_ID = 237;
-
 // Stats page route
 router.get('/', async (req, res) => {
   try {
-    // Fetch LeBron's stats from the Ball Don't Lie API
-    const response = await axios.get(`${process.env.BALL_DONT_LIE_API}/players/${LEBRON_ID}`);
-    const playerData = response.data;
+    // Use mock data since the API is down
+    const playerData = {
+      first_name: "LeBron",
+      last_name: "James",
+      position: "F",
+      height_feet: 6,
+      height_inches: 9,
+      weight_pounds: 250,
+      team: {
+        full_name: "Los Angeles Lakers",
+        abbreviation: "LAL"
+      }
+    };
     
-    // Fetch some season averages (the most recent available in the API)
-    const seasonResponse = await axios.get(`${process.env.BALL_DONT_LIE_API}/season_averages?player_ids[]=${LEBRON_ID}`);
-    const seasonData = seasonResponse.data.data.length > 0 ? seasonResponse.data.data[0] : null;
+    const seasonData = {
+      pts: 25.7,
+      reb: 7.5,
+      ast: 8.3,
+      stl: 1.2,
+      blk: 0.5,
+      fg_pct: 0.504,
+      fg3_pct: 0.355,
+      ft_pct: 0.731
+    };
     
-    // Render the stats page with the API data
+    // Render the stats page with the mock data
     res.render('stats', {
       title: 'LeBron James Stats',
       player: playerData,
       stats: seasonData
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).send('Error fetching stats data');
+    console.error('API Error:', err.message);
+    res.status(500).render('stats', {
+      title: 'LeBron James Stats',
+      player: null,
+      stats: null,
+      error: 'Error fetching stats data. The API may be down or rate-limited.'
+    });
   }
 });
 
