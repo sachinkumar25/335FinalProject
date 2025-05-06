@@ -1,0 +1,68 @@
+<%- include('./partials/header') %>
+
+<div class="container">
+  <div class="hero">
+    <h1>Welcome to the LeBron James Fan Page</h1>
+    <p>The King of Basketball</p>
+    <a href="/stats" class="btn">View LeBron's Stats</a>
+  </div>
+
+  <div class="content">
+    <h2>About LeBron</h2>
+    <p>LeBron Raymone James Sr. is an American professional basketball player for the Los Angeles Lakers of the National Basketball Association (NBA). Nicknamed "King James", he is widely considered one of the greatest players ever and is often compared to Michael Jordan in debates over the greatest basketball player of all time.</p>
+    
+    <h2>Career Highlights</h2>
+    <ul>
+      <li>NBA champion multiple times</li>
+      <li>NBA Finals MVP multiple times</li>
+      <li>NBA Most Valuable Player multiple times</li>
+      <li>NBA All-Star multiple times</li>
+      <li>Olympic gold medalist</li>
+    </ul>
+  </div>
+
+  <div class="comment-section">
+    <h2>Fan Comments</h2>
+    
+    <form action="/comment" method="POST" class="comment-form">
+      <h3>Leave a Comment</h3>
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="rating">Rate LeBron (1-10):</label>
+        <select id="rating" name="rating" required>
+          <% for(let i = 1; i <= 10; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+      </div>
+      
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    
+    <div class="comments-list">
+      <h3>Recent Comments</h3>
+      <% if(comments.length > 0) { %>
+        <% comments.forEach(comment => { %>
+          <div class="comment">
+            <h4><%= comment.name %> <span class="rating">Rating: <%= comment.rating %>/10</span></h4>
+            <p><%= comment.message %></p>
+            <small>Posted on <%= comment.createdAt.toLocaleDateString() %></small>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No comments yet. Be the first to leave a comment!</p>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

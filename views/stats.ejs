@@ -1,0 +1,68 @@
+<%- include('./partials/header') %>
+
+<div class="container">
+  <div class="stats-hero">
+    <h1>LeBron James Stats</h1>
+    <a href="/" class="btn">Back to Home</a>
+  </div>
+
+  <div class="stats-content">
+    <% if(player) { %>
+      <div class="player-info">
+        <h2>Player Information</h2>
+        <p><strong>Name:</strong> <%= player.first_name %> <%= player.last_name %></p>
+        <p><strong>Position:</strong> <%= player.position %></p>
+        <p><strong>Height:</strong> <%= player.height_feet %>'<%= player.height_inches %>"</p>
+        <p><strong>Weight:</strong> <%= player.weight_pounds %> lbs</p>
+        <p><strong>Team:</strong> <%= player.team.full_name %> (<%= player.team.abbreviation %>)</p>
+      </div>
+    <% } %>
+
+    <% if(stats) { %>
+      <div class="season-stats">
+        <h2>Season Averages</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-value"><%= stats.pts %></span>
+            <span class="stat-label">PPG</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value"><%= stats.reb %></span>
+            <span class="stat-label">RPG</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value"><%= stats.ast %></span>
+            <span class="stat-label">APG</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value"><%= stats.stl %></span>
+            <span class="stat-label">SPG</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value"><%= stats.blk %></span>
+            <span class="stat-label">BPG</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value"><%= (stats.fg_pct * 100).toFixed(1) %>%</span>
+            <span class="stat-label">FG%</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value"><%= (stats.fg3_pct * 100).toFixed(1) %>%</span>
+            <span class="stat-label">3P%</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value"><%= (stats.ft_pct * 100).toFixed(1) %>%</span>
+            <span class="stat-label">FT%</span>
+          </div>
+        </div>
+        <p class="stats-disclaimer">* Stats are seasonal averages from the Ball Don't Lie API</p>
+      </div>
+    <% } else { %>
+      <div class="error-message">
+        <p>Could not retrieve LeBron's stats at this time. Please try again later.</p>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>
