@@ -19,7 +19,7 @@ A fan page dedicated to LeBron James featuring his career stats, highlights, and
 - MongoDB Database API for user comments and interactions
 
 ## Contact Email
-ametukur@terpmail.umd.edu
+amet@terpmail.umd.edu
 
 ## Deployed App Link
 [LeBron Fan Page](https://lebron-james-the-goat-335finalproject.onrender.com)
