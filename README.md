@@ -12,7 +12,7 @@
 A fan page dedicated to LeBron James featuring his career stats, highlights, and a community comment section for basketball fans.
 
 ## YouTube Video Link
-[Project Demo](https://www.youtube.com/placeholder) *(To be updated with actual link)*
+[Project Demo](https://www.youtube.com/watch?v=Yc8qtS2k3dU)
 
 ## APIs Information
 - NBA Stats API (https://www.balldontlie.io/api/v1/players)
