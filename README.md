@@ -5,8 +5,8 @@
 - **Group Members:** 
   - Akhil Metukuru (amet)
   - Nathan Tamari (ntamari)
-  - Sachin (Sashvad) Satish Kumar (ssatishk)
-  - Joshua John (jjohn)
+  - Sachin (Sashvad) Satish Kumar (sskumar)
+  - Joshua John (joshjohn)
 
 ## App Description
 A fan page dedicated to LeBron James featuring his career stats, highlights, and a community comment section for basketball fans.
