@@ -1,9 +1,9 @@
 # LeBron James Fan Page
 
 ## Project Information
-- **Submitted by:** Akhil Metukuru (akhilmet)
+- **Submitted by:** Akhil Metukuru (Directory ID: amet)
 - **Group Members:** 
-  - Akhil Metukuru (akhilmet)
+  - Akhil Metukuru (amet)
   - Nathan Tamari (ntamari)
   - Sachin (Sashvad) Satish Kumar (ssatishk)
   - Joshua John (jjohn)
