@@ -1,18 +1,12 @@
-// This file could contain any client-side JavaScript functionality
-// For this simple app, we'll just add a basic enhancement for form validation
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the comment form if it exists on the page
     const commentForm = document.querySelector('.comment-form');
     
     if (commentForm) {
       commentForm.addEventListener('submit', function(e) {
-        // Get form fields
         const nameInput = document.getElementById('name');
         const messageInput = document.getElementById('message');
         const ratingInput = document.getElementById('rating');
         
-        // Basic validation
         let isValid = true;
         
         if (nameInput.value.trim() === '') {
@@ -30,14 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
           isValid = false;
         }
         
-        // If validation fails, prevent form submission
         if (!isValid) {
           e.preventDefault();
         }
       });
     }
     
-    // Add animation to stat boxes on the stats page
     const statBoxes = document.querySelectorAll('.stat-box');
     if (statBoxes.length > 0) {
       statBoxes.forEach(box => {

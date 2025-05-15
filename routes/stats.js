@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-// Stats page route
 router.get('/', async (req, res) => {
   try {
-    // Use mock data since the API is down
     const playerData = {
       first_name: "LeBron",
       last_name: "James",
@@ -30,7 +28,6 @@ router.get('/', async (req, res) => {
       ft_pct: 0.731
     };
     
-    // Render the stats page with the mock data
     res.render('stats', {
       title: 'LeBron James Stats',
       player: playerData,
