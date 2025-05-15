@@ -5,7 +5,7 @@
 - **Group Members:** 
   - Akhil Metukuru (amet)
   - Nathan Tamari (ntamari)
-  - Sachin (Sashvad) Satish Kumar (sskumar)
+  - Sachin Sashvad Satish Kumar (sskumar)
   - Joshua John (joshjohn)
 
 ## App Description
