@@ -12,23 +12,46 @@
         <h2>Player Information</h2>
         <p><strong>Name:</strong> <%= player.first_name %> <%= player.last_name %></p>
         <p><strong>Position:</strong> <%= player.position %></p>
-        <p><strong>Height:</strong> <%= player.height_feet %>'<%= player.height_inches %>"</p>
-        <p><strong>Weight:</strong> <%= player.weight_pounds %> lbs</p>
-        <p><strong>Team:</strong> <%= player.team.full_name %> (<%= player.team.abbreviation %>)</p>
+        <% if (player.height_feet || player.height) { %>
+          <p><strong>Height:</strong> <%= player.height || (player.height_feet + "'" + player.height_inches + "\"") %></p>
+        <% } %>
+        <% if (player.weight_pounds || player.weight) { %>
+          <p><strong>Weight:</strong> <%= player.weight || (player.weight_pounds + " lbs") %></p>
+        <% } %>
+        <% if (player.team) { %>
+          <p><strong>Team:</strong> <%= player.team.full_name %> (<%= player.team.abbreviation %>)</p>
+        <% } %>
       </div>
-    <% } else if(typeof error !== 'undefined') { %>
-      <div class="error-message">
-        <p><%= error %></p>
-      </div>
-    <% } else { %>
-      <div class="error-message">
-        <p>Could not retrieve LeBron's stats at this time. Please try again later.</p>
+    <% } %>
+
+    <% if(team) { %>
+      <div class="team-info" style="margin-top: 20px; padding: 20px; background-color: #f0f0f0; border-radius: 8px;">
+        <h2>Team Information</h2>
+        <div style="display: flex; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 200px; margin-right: 20px;">
+            <p><strong>Team:</strong> <%= team.full_name %></p>
+            <p><strong>Abbreviation:</strong> <%= team.abbreviation %></p>
+            <p><strong>City:</strong> <%= team.city %></p>
+          </div>
+          <div style="flex: 1; min-width: 200px;">
+            <p><strong>Conference:</strong> <%= team.conference %></p>
+            <p><strong>Division:</strong> <%= team.division %></p>
+          </div>
+        </div>
       </div>
     <% } %>
 
     <% if(stats) { %>
-      <div class="season-stats">
+      <div class="season-stats" style="margin-top: 20px;">
         <h2>Season Averages</h2>
+        <% if(typeof goatTierRequired !== 'undefined' && goatTierRequired) { %>
+          <div style="background-color: #fff3cd; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+            <p style="margin: 0; font-size: 0.9em;">
+              <strong>Note:</strong> Season averages are only available with a GOAT tier subscription to the Ball Don't Lie API. 
+              The statistics shown below are fill-in data for demonstration purposes.
+            </p>
+          </div>
+        <% } %>
         <div class="stats-grid">
           <div class="stat-box">
             <span class="stat-value"><%= stats.pts %></span>
@@ -63,11 +86,6 @@
             <span class="stat-label">FT%</span>
           </div>
         </div>
-        <p class="stats-disclaimer">* Stats are seasonal averages from the Ball Don't Lie API</p>
-      </div>
-    <% } else { %>
-      <div class="error-message">
-        <p>Could not retrieve LeBron's stats at this time. Please try again later.</p>
       </div>
     <% } %>
   </div>
