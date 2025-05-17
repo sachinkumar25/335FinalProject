@@ -22,4 +22,4 @@ A fan page dedicated to LeBron James featuring his career stats, highlights, and
 amet@terpmail.umd.edu
 
 ## Deployed App Link
-[LeBron Fan Page](https://lebron-james-the-goat-335finalproject.onrender.com)
+[LeBron Fan Page](https://lebron-james-335finalproject.onrender.com/)
